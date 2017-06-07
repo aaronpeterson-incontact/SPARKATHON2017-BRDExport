@@ -6,10 +6,10 @@ provider:
 
 functions:
   exportToStudio:
-    handler: exportToStudio.exportToStudio
+    handler: exportToStudio.exportCallFlow
     events:
       - http:
-          path: /exportToStudio
+          path: /exportCallFlow
           method: post
 
 plugins:

@@ -8,20 +8,22 @@ var config = {
 };
 
 
-module.exports.exportToStudio = (event, context, callback) => {
+module.exports.exportCallFlow = (event, context, callback) => {
+
+    // SQL Sample
     sql.connect(config, function(err) {
         if (err) console.log(err);
 
         var request = new sql.Request();
 
-        request.query('select top 1000 * from dbo.IVR_Source', (err, result) => {
+        request.query('select top 1 * from dbo.IVR_Source', (err, result) => {
             console.log(result);
             sql.close();
         });
     });
 
 
-
+    // Json data parsing sample
     let data = {};
     data = JSON.parse(event.body);
     console.log(data);
@@ -32,6 +34,7 @@ module.exports.exportToStudio = (event, context, callback) => {
         }),
     };
 
+    //Callback sample
     callback(null, response);
 
 }
